@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction to Digital Design and Integrated Circuits</title>
+    <meta name="description" content="Introduction to Digital Design and Integrated Circuits">
+
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <link rel="canonical" href="http://inst.eecs.berkeley.edu/~eecs151/fa21/">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <a class="site-title" href="./index.html">EECS 151/251A, Fall 2021</a>
+
+        <nav class="site-nav">
+          <a class="page-link" href="#course-outline">Outline</a>
+          <a class="page-link" href="#resources">Resources</a>
+          <a class="page-link" href="https://piazza.com/berkeley/fall2021/eecs151251a">Piazza</a>
+          <a class="page-link" href="https://www.gradescope.com/courses/295948">Gradescope</a>
+          <a class="page-link" href="http://inst.eecs.berkeley.edu/~eecs151/">Archives</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+          <header class="post-header">
+            <h1 class="post-title">Introduction to Digital Design and Integrated Circuits</h1>
+          </header>
+
+        <div class="post-content">
+          <h2 id="letures-labs-office-hours">Lectures, Labs, Office Hours</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>Lectures</td>
+                <td>Mon, Wed</td>
+                <td>11:00 am - 12:30 pm</td>
+                <td>Cory 540AB, Overflow room: Cory 293, Online</td>
+                <td>Borivoje Nikolic</td>
+              </tr>
+              <tr>
+                <td>Discussion</td>
+                <td>Mon</td>
+                <td>3:00 pm - 4:00 pm</td>
+                <td>Social Sciences Building 170</td>
+                <td>Alisha, Daniel, Zhaokai</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Tu</td>
+                <td>8:00 am - 9:00 am</td>
+                <td>Online</td>
+                <td>Alisha, Daniel, Zhaokai</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Wed</td>
+                <td>3:00 pm - 4:00 pm</td>
+                <td>GPB 107</td>
+                <td>Alisha, Daniel, Zhaokai</td>
+              </tr>
+              <tr>
+                <td>ASIC Lab</td>
+                <td>Mon</td>
+                <td>5:00 pm - 8:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Nayiri Krzysztofowicz</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Wed</td>
+                <td>8:00 am - 11:00 am</td>
+                <td>Cory 111/117, Online</td>
+                <td>Daniel Grubb</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Fri</td>
+                <td>11:00 am - 2:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Zhaokai Liu</td>
+              </tr>
+              <tr>
+                <td>FPGA Labs</td>
+                <td>Tue</td>
+                <td>3:00 pm - 6:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Zhenghan Lin</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Wed</td>
+                <td>6:00 pm - 9:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Vighnesh Iyer</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Thursday</td>
+                <td>11:00 am - 2:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Alisha Menon</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Fri</td>
+                <td>8:00 am - 11:00 am</td>
+                <td>Cory 111/117</td>
+                <td>Charles Hong</td>
+              </tr>
+              <tr>
+                <td>Office Hours</td>
+                <td>Mon</td>
+                <td>1:00 pm - 2:00 pm</td>
+                <td>Cory Courtyard</td>
+                <td>Borivoje Nikolic</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Mon</td>
+                <td>2:00 pm - 3:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Alisha Menon</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Tue</td>
+                <td>3:00 pm - 4:00 pm</td>
+                <td>Remote/Online</td>
+                <td>Daniel Grubb</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Tue</td>
+                <td>6:00 pm - 7:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Zhenghan Lin</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Wed</td>
+                <td>10:00 am - 11:00 am</td>
+                <td>Cory 111/117</td>
+                <td>Vighnesh Iyer</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Wed</td>
+                <td>2:00 pm - 3:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Charles Hong</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Th</td>
+                <td>3:30 pm - 4:30 pm</td>
+                <td>Cory 111/117, Online</td>
+                <td>Nayiri Krzysztofowicz</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Fri</td>
+                <td>2:00 pm - 3:00 pm</td>
+                <td>Cory 111/117</td>
+                <td>Zhaokai Liu</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="homework">Homework</h2>
+
+          <ul>
+            <li>Ask questions on <a href="https://piazza.com/berkeley/fall2021/eecs151251a">our Piazza forum</a>.</li>
+            <li>Homeworks will be posted as links in the <a href="#course-outline">outline</a> below. Please submit completed homework via <a href="https://www.gradescope.com/courses/295948"> Gradescope</a>. See Piazza for the entry code.</li>
+            <li>Homework will be released on Thursdays before midnight, and will be due next Friday 8 days later. Homework will be challenging and graded for correctness.</li>
+          </ul>
+
+          <h2>Exams</h2>
+
+          <ul>
+            <li><a href="https://drive.google.com/drive/folders/1yTVHdig5w065LjT4UdCU0CeDZbxyvQRt">Past Midterms and Finals</a></li>
+<!--             <li>Midterm 1: 10/2 (2:30 - 4:00 pm) (Cory 540AB: Last name A-L, Genetics &amp; Plant Biology 103: Last name M-Z )</li>
+            <ul>
+              <li>Midterm 1 Review Session: 9/30 (7:00 - 8:30 pm) (Tan Hall 180) <a href="./files/Midterm1_Review.pdf">slides</a>
+              </li>
+            </ul>
+            <li>Midterm 2: 11/6 (2:30 - 4:00 pm) (Cory 540AB: Last name A-H, Cory 277: Last name I-Z)</li>
+            <ul>
+              <li>Midterm 2 Review Session: 11/5 (7:00 - 8:30 pm) (Kroeber Hall 155) <a
+                  href="./files/Midterm2_Review.pdf">slides</a></li>
+            </ul>
+            <li>Final Review Session: 12/13 (2:00 - 4:00 pm) (Cory 540) <a href="./files/Final_Review.pdf">slides</a></li -->
+          </ul>
+
+
+          <h2 id="course-outline">Course Outline</h2>
+          <!-- <ul>
+            <li><a href="https://www.youtube.com/playlist?list=PLW6lmkTQ3FQVyMbSHpXyaGK9GvDEsr0mm">Webcast playlist</a></li>
+            <li><a href="https://www.youtube.com/channel/UCeEgTNbyPoP_dSnSuQWv2cA/live">Webcast livestream</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/16EXtEjz7dTznBETQbKZQJfa0umseIecIqQKKz1YR69Y/edit#gid=0">Question/Checkoff Queue</a></li>
+          </ul> -->
+
+          <table>
+            <thead>
+              <tr>
+                <th>Week</th>
+                <th>Date</th>
+                <th>Lecture Topic</th>
+				<th>Recording</th>
+				<th> Optional reading</th>
+                <th>Discussion</th>
+                <th>ASIC Lab</th>
+                <th>FPGA Lab</th>
+                <th>Homework</th>
+                <th>Homework Solution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>8/25</td>
+                <td>Class Organization &amp; Introduction to Course Content
+                  <a href="files/lectures/Lecture1-Intro-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture1-Intro-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture1-Intro-8up.pdf">(8-up)</a>
+                </td>
+                <td></td>
+				<td></td>
+				<td>No Discussion</td>
+                <td>No Lab</td>
+                <td>No Lab</td>
+                <td>No homework!</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>8/30</td>
+                <td>Design Process
+		  		  <a href="files/lectures/Lecture2-Design-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture2-Design-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture2-Design-8up.pdf">(8-up)</a>
+                  
+                  
+                </td>
+				<td>
+				  <a href="https://drive.google.com/file/d/1BGwh7iNtmUl1krt6bSLH6ndHbPpBug0V/view?usp=sharing">Lecture 2</a>
+				  <a href="https://drive.google.com/file/d/1QatfLxv4bWNnKccs1FD1VH0SuwKYHK9f/view?usp=sharing">Robustness</a>
+				  <a href="https://drive.google.com/file/d/1mkdXCa44YUv2uSg0AlpyDTMNk1WMkd9w/view?usp=sharing">Performance</a>
+                  <a href="https://drive.google.com/file/d/1DLMC9mo_KZsThKDvK9ZzQBYOvhg5nNeH/view?usp=sharing">Power</a>
+				  <a href="https://drive.google.com/file/d/1ZKqt56FZjPT5YCHXsuc6OKapKJUp6qV_/view?usp=sharing">Cost</a>
+			    </td>
+                <td>H&amp;H,&nbsp; &nbsp;Ch1, </td>
+				<td>
+                  <a href="files/discussions/blank/discussion1.pdf">Discussion 1 slides</a>
+                  <a href="files/discussions/annotated/discussion1_annotated.pdf">Discussion 1 annotated slides</a>
+                </td>
+                <td>
+                <a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab1/spec.md">Lab 1: Getting Around the Compute Environment</a>
+                </td>
+                <td>
+                <a href="https://github.com/EECS150/fpga_labs_fa21/blob/master/lab1/spec/spec.md">Lab 1: Getting Set Up</a>
+                </td>
+                <td>
+                <a href="files/homeworks/eecs151_hw1.pdf">Homework 1</a>
+		</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>9/1</td>
+                <td>Verilog I
+		  <a href="files/lectures/Lecture3-VerilogI-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture3-VerilogI-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture3-VerilogI-8up.pdf">(8-up)</a>
+                </td>
+                <td>
+				  <a href="https://drive.google.com/file/d/1B0IK2BdR_Ab2OlzzB7R_DYikqcF5C9XO/view?usp=sharing">Lecture 3</a></td>
+				<td></td>
+				<td>
+                  <a href="files/discussions/blank/discussion2.pdf">Discussion 2 slides</a>
+		</td>
+                <td>
+                <a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab2/spec.md">Lab 2: Verilog and Simulation</a>
+		</td>
+                <td>
+                <a href="https://github.com/EECS150/fpga_labs_fa21/blob/master/lab2/spec/spec.md">Lab 2: Introduction to FPGA Development</a>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+				<tr> 
+				<td>3</td>
+				<td>9/8</td>
+				<td>Verilog II
+		  <a href="files/lectures/Lecture4-VerilogII-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture4-VerilogII-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture4-VerilogII-8up.pdf">(8-up)</a></td> 
+				<td></td>
+				<td>H&amp;H,&nbsp; &nbsp;Ch4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td> <a href="files/homeworks/eecs151_hw2.pdf">Homework 2</a> 
+        </td><td>
+             <a href="files/homeworks/hw2_solution.pdf">Homework 2 solution</a>
+       </td>
+			</tr>
+			<tr> 
+				<td>4</td>
+				<td>9/13</td>
+				<td>Verilog III
+		  <a href="files/lectures/Lecture5-VerilogIII-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture5-VerilogIII-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture5-VerilogIII-8up.pdf">(8-up)</a></td> 
+				<td></td>
+				<td>H&amp;H&nbsp; , Ch2 or P&amp;H, App. A</td>
+				<td>
+				<a href="files/discussions/blank/discussion3.pdf">Discussion 3 slides</a>
+                <a href="files/discussions/annotated/discussion3_annotated.pdf">Discussion 3 annotated slides</a>
+                </td>
+
+				<td>
+				<a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab3/spec.md">Lab 3: Logic Synthesis</a>
+				</td>
+				<td>
+        <a href="https://github.com/EECS150/fpga_labs_fa21/blob/master/lab3/spec/spec.md">Lab 3: More Sequential Circuits, Audio "DAC"</a>    
+        </td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>	
+			<td></td>
+				<td>9/15</td>
+				<td>Combinational Logic
+		  <a href="files/lectures/Lecture6-CL-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture6-CL-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture6-CL-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/1ebhXJT17TbyhX8EICnGRoiOgo3kt_GOc/view">Zoom recording</a></td>
+				<td></td>
+				<td><a href="files/discussions/blank/discussion4.pdf">Discussion 4 slides</a>
+            <a href="files/discussions/annotated/discussion4_annotated.pdf">Discussion 4 annotated slides</a>
+        </td>
+				<td></td>
+				<td></td>
+				<td><a href="files/homeworks/eecs151_hw3.pdf">Homework 3</a>
+        </td><td>
+            <a href="files/homeworks/hw3_solution.pdf">Homework 3 solution</a>
+        </td>
+			</tr>
+			<tr>	
+			<td>5</td>
+				<td>9/20</td>
+				<td>Finite State Machines
+		  <a href="files/lectures/Lecture7-FSMs-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture7-FSMs-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture7-FSMs-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/1PhFPWyiViHaHzXwA2KwBaHBz0_F9QQbt/view">Zoom recording</a></td>
+				<td>H&amp;H, Ch. 3.4&nbsp;</td>
+				<td></td>
+				<td>
+				<a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab4/spec.md">Lab 4: Floorplanning, Placement, Power, and CTS</a>
+				</td>
+				<td>
+				<a href="https://github.com/EECS150/fpga_labs_fa21/blob/lab4/lab4/spec/spec.md">Lab 4: Tunable Wave Generator, NCO, FSMs, RAMs</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>9/22</td>
+				<td>RISC-V ISA
+		  <a href="files/lectures/Lecture8-RISC-V-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture8-RISC-V-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture8-RISC-V-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/1utX1UfplTR19C7QJhp2OOZjGmAa6G-SF/view?usp=sharing">Zoom recording</a></td>
+				<td>H&amp;H, Ch. 6,7&nbsp; or P&amp;H, Ch. 2,4 CS61C videos (below) </td>
+				<td></td>
+				<td>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>9/27</td>
+				<td>RISC-V pipelining
+		  <a href="files/lectures/Lecture9-Pipelining-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture9-Pipelining-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture9-Pipelining-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/1DwQrlzSrjOW2MNjs3a8fvpRoiQdjVbak/view?usp=sharing"> Zoom recording</a></td>
+				<td>H&amp;H, Ch. 7&nbsp; or P&amp;H, Ch. 4 CS61C videos (below) </td>
+				<td><a href="files/discussions/blank/discussion5.pdf">Discussion 5 slides</a>
+				<a href="files/discussions/annotated/discussion5_annotated.pdf">(annotated)</a></td>
+				<td><a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab5/spec.md">Lab 5: Routing</a>
+				</td>
+				<td>
+                                <a href="https://github.com/EECS150/fpga_labs_fa21/blob/master/lab5/spec/spec.md">Lab 5: UART</a>
+                                </td>
+				<td><a href="files/homeworks/eecs151_fa21_hw4.pdf">Homework 4</a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>9/29</td>
+				<td>Pipelining, FPGAs
+		  		  <a href="files/lectures/Lecture10-PipeliningFPGA-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture10-PipeliningFPGA-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture10-PipeliningFPGA-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/15UkBw6D73F5-wDbbs-Phq61L6So8Zjdv/view?usp=sharing">Zoom recording</a></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>10/4</td>
+				<td>FPGAs, CMOS
+		  		  <a href="files/lectures/Lecture11-CMOS-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture11-CMOS-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture11-CMOS-8up.pdf">(8-up)</a></td>
+                                <td>
+				<a href="https://drive.google.com/file/d/1NJVYD8odkixglDIE2YngZ0_YucemJmYE/view">Zoom recording</a></td>
+        		<td></td>
+				<td><a href="files/discussions/blank/discussion6.pdf">Discussion 6 slides</a>
+            <a href="files/discussions/annotated/discussion6_annotated.pdf">Discussion 6 annotated slides</a></td>
+				<td>No Lab</td>
+				<td>No Lab</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>10/6</td>
+				<td>CMOS
+		  		  <a href="files/lectures/Lecture12-CMOS2-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture12-CMOS2-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture12-CMOS2-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://kaf.berkeley.edu/media/t/1_0jh0xcqs">Kaltura</a></td>
+        		<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><a href="files/homeworks/hw5.pdf">Homework 5</a></td>
+				<td><a href="files/homeworks/hw5_solution.pdf">Homework 5 Solution</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>10/7</td>
+				<td>Midterm 1
+          <a href="files/mt1_fa21_sol.pdf"> Solution</a> </td> 
+				<td></td>
+        		<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>10/11</td>
+				<td>CMOS Logic
+		  		  <a href="files/lectures/Lecture13-Logic-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture13-Logic-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture13-Logic-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/14ddvTKfpvN0vsG_xmR1VXPap_I2W_FbK/view?usp=sharing">Zoom recording</a></td>
+        		<td>RCN, Ch. 5.1-5.4, 6.1-6.2</td>
+				<td><a href="files/discussions/blank/discussion7.pdf">Discussion 7 slides</a>
+            <a href="files/discussions/annotated/discussion7_annotated.pdf">Discussion 7 annotated slides</a></td>
+				<td><a href="https://github.com/EECS150/asic_labs_fa21/blob/main/lab6/spec.md">Lab 6: SRAM Integration, DRC, LVS</a></td>
+				<td><a href="https://github.com/EECS150/fpga_labs_fa21/blob/master/lab6/spec/spec.md">Lab 6: FIFO and UART Piano</a></td>
+				<td><a href="files/homeworks/hw6.pdf">Homework 6</a></td>
+				<td><a href="files/homeworks/hw6_solution.pdf">Homework 6 solution</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>10/13</td>
+				<td>CMOS Logic
+		  		  <a href="files/lectures/Lecture14-Delay-v2-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture14-Delay-v2-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture14-Delay-v2-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+        		<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+				<tr>
+				<td>9</td>
+				<td>10/18</td>
+				<td>Logical effort
+		  		  <a href="files/lectures/Lecture15-LE-v3-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture15-LE-v3-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture15-LE-v3-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+        		<td>RCN, Ch. 6.2</td>
+				<td><a href="files/discussions/blank/discussion8.pdf">Discussion 8 slides</a><a href="files/discussions/annotated/discussion8_annotated.pdf">(annotated)</a></td>
+                  <td><a href="https://github.com/EECS150/asic_labs_fa21/tree/main/project">ASIC Project</a></td>
+                                <td><a href="https://github.com/EECS150/project_skeleton_fa21/blob/master/spec/overview.md">FPGA Project</a></td>
+				<td></td>
+				<td></td>
+			</tr>
+				<tr>
+				<td></td>
+				<td>10/20</td>
+				<td>Wires, energy
+		  		  <a href="files/lectures/Lecture16-WiresEnergy-1up.pdf">slides</a>
+                  <a href="files/lectures/Lecture16-WiresEnergy-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture16-WiresEnergy-8up.pdf">(8-up)</a></td> 
+				<td></td>
+        		<td>RCN, Ch. 4&nbsp;</td>
+				<td></td>
+                <td></td>
+                <td></td>
+				<td><a href="files/homeworks/eecs151_hw7.pdf">Homework 7</a></td>
+				<td><a href="files/homeworks/hw7_solution.pdf">Homework 7 Solution</a></td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>10/25</td>
+				<td>Adders
+		  		  <a href="files/lectures/Lecture17-Adders-1up">slides</a>
+               	  <a href="files/lectures/Lecture17-Adders-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture17-Adders-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td>RCN, Ch. 11.1-11.3&nbsp; H&amp;H 5.2</td>
+        <td><a href="files/discussions/blank/discussion9.pdf">Discussion 9 slides</a>
+            <a href="files/discussions/annotated/discussion9_annotated.pdf">(annotated)</a>
+            <a href="https://drive.google.com/file/d/1JXQnoW1zPNMvdL-_JV1UuvCkiy7vyHhf/view?usp=sharing">(recording)</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="files/homeworks/hw8.pdf">Homework 8</a></td>
+				<td><a href="files/homeworks/hw8_solution.pdf">Homework 8 Solution</a></td>
+			</tr>
+		<tr>
+				<td></td>
+				<td>10/27</td>
+				<td>Adders II
+		  		  <a href="files/lectures/Lecture18-Adders2-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture18-Adders2-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture18-Adders2-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td></td>
+        <td><a href="files/discussions/blank/Discussion10_worksheet.pdf">Discussion10 (p. 1-3) and midterm review (p. 4-7) slides</a><a href="files/discussions/annotated/Discussion10_worksheet_annotated.pdf">, Discussion10 annotated</a><a href="https://drive.google.com/file/d/1EnpgX8aK5qB5OobjVY2e2SeQBCondWrU/view?usp=sharing">, Discussion10 recording</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+				<td><a href="files/discussions/annotated/Discussion_worksheet_solution.pdf">Worksheet solutions</a></td>
+			</tr>
+		<tr>
+				<td>11</td>
+				<td>11/1</td>
+				<td>Multipliers
+		  		  <a href="files/lectures/Lecture19-Multipliers-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture19-Multipliers-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture19-Multipliers-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+				<td></td>
+			</tr>
+		<tr>
+		<td></td>
+				<td>11/3</td>
+				<td><a href="https://drive.google.com/file/d/1NzOjbLG4-SzuslQBv-9z3zJ3InP_IMH7/view">Guest lecture</a>, 
+					Dividers
+		  		  <a href="files/lectures/Lecture20-Dividers-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture20-Dividers-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture20-Dividers-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href="files/homeworks/hw9.pdf">Homework 9</a></td>
+				<td><a href="files/homeworks/hw9_solutions.pdf">solution</a></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td>11/4</td>
+			<td>Midterm 2 <a href="files/mt2_fa21_sol.pdf">Solution</a></td> 
+			<td></td>
+        		<td></td>
+        		<td></td>
+        		<td></td>
+        		<td></td>
+			<td></td>
+		</tr>
+		<tr>
+				<td>12</td>
+				<td>11/8</td>
+				<td>Latches
+		  		  <a href="files/lectures/Lecture21-DividersLatches-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture21-DividersLatches-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture21-DividersLatches-8up.pdf">(8-up)</a></td> 
+				<td><a href="https://drive.google.com/file/d/1A0pUgrLtYI2SHWwG76q9Wmz7erjQmQLj/view">Zoom recording</a></td>
+				<td>RCN 7.1-7.2 H&amp;H 3.1-3.3</td>
+        <td><a href="files/discussions/blank/discussion11.pdf">Discussion 11 Slides</a><a href="files/discussions/annotated/discussion11_annotated.pdf"> (annotated)</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+		<td></td>
+			</tr>
+		<tr>
+				<td></td>
+				<td>11/10</td>
+				<td>Latches, Flip-Flops
+		  		  <a href="files/lectures/Lecture22-Latches-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture22-Latches-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture22-Latches-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+				<td></td>
+			</tr>
+		<tr>
+				<td>13</td>
+				<td>11/15</td>
+				<td>SRAM
+		  		  <a href="files/lectures/Lecture23-SRAM-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture23-SRAM-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture23-SRAM-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td>RCN Ch. 12 H&amp;H 5.5</td>
+        <td><a href="files/discussions/blank/discussion12.pdf">Discussion 12 slides</a>
+          <a href="files/discussions/annotated/discussion12_annotated.pdf">(annotated)</a>
+          <a href="https://drive.google.com/file/d/19gWgQN5YAEZ1q6WO0EoR16aXdo0xuYWa/view?usp=sharing">(recording)</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="files/homeworks/hw10.pdf">Homework 10</a></td>
+				<td><a href="files/homeworks/hw10_solution.pdf">Homework 10</a></td>
+		</tr>
+		<tr>
+				<td></td>
+				<td>11/17</td>
+				<td>Guest lecture, Decoders, Cache
+		  		  <a href="files/lectures/Lecture24-Decoders-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture24-Decoders-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture24-Decoders-8up.pdf">(8-up)</a></td> 
+				<td>Kaltura</td>
+				<td>CS61C videos below</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+		<td></td>
+			</tr>
+		<tr>
+				<td>14</td>
+				<td>11/22</td>
+				<td>Memories
+		  		  <a href="files/lectures/Lecture25-Memories-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture25-Memories-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture25-Memories-8up.pdf">(8-up)</a></td> 
+				<td></td>
+				<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+		<td></td>
+			</tr>
+		<tr>
+				<td>15</td>
+				<td>11/29</td>
+				<td>Flash, Parallelism
+		  		  <a href="files/lectures/Lecture26-Parallelism-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture26-Parallelism-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture26-Parallelism-8up.pdf">(8-up)</a></td> 
+				<td></td>
+				<td></td>
+        <td><a href="files/discussions/blank/Discussion13.pdf">Discussion 13 slides</a>
+          <a href="files/discussions/annotated/discussion13_annotated.pdf">(annotated)</a><a href="https://drive.google.com/file/d/1digoVdd3A8f2INHbRqQHFgGNv7EY0ZDs/view?usp=sharing">(recording)</a></td>
+        <td></td>
+        <td></td>
+        <td><a href="files/homeworks/hw11.pdf">Homework 11</a></td>
+        <td><a href="files/homeworks/hw11_solution.pdf">Homework 11 Solution</a></td>
+			</tr>
+	<tr>
+				<td></td>
+				<td>12/1</td>
+				<td>Summary
+		  		  <a href="files/lectures/Lecture27-Finale-1up.pdf">slides</a>
+               	  <a href="files/lectures/Lecture27-Finale-2up.pdf">(2-up)</a>
+                  <a href="files/lectures/Lecture27-Finale-8up.pdf">(8-up)</a></td> 
+				<td></td>
+				<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+			</tr>
+
+
+
+            </tbody>
+
+
+
+
+          </table>
+
+          <h2 id="resources">Resources</h2>
+          <h3 id="textbooks">Textbooks</h3>
+
+          <ul>
+            <li><strong>Recommended</strong> <a href="https://calstudentstore.berkeley.edu/ebook/9780128200650">Digital Design and Computer Architecture</a>, RISC-V ed, David Money Harris &amp; Sarah L. Harris (H &amp; H)</li>
+            <li><strong>Recommended</strong> <a href="http://search.ebscohost.com/login.aspx?direct=true&amp;db=cat04202a&amp;AN=ucb.b15897583&amp;site=eds-live&amp;authtype=ip,guest&amp;custid=s1226370&amp;groupid=main&amp;profile=eds">Digital Integrated Circuits: A Design Perspective</a>, 2nd ed, Jan M. Rabaey, Anantha Chandrakasan, Borivoje Nikolić (RCN) </li>
+            <li><strong>Useful</strong> <a href="https://www.amazon.com/Computer-Organization-Design-RISC-V-Architecture/dp/0128122757">Computer Organization and Design RISC-V Edition</a>, David Patterson and John Hennessy (P&amp;H)</li>
+            <li><strong>Useful</strong> <a href="https://www.amazon.com/dp/0321547748/ref=cm_sw_em_r_mt_dp_U_ui6rCbRX2GR88">CMOS VLSI Design</a>, Neil Weste, David Harris (W&amp;H)</li>
+          </ul>
+
+          <h3 id="verilog">Verilog</h3>
+
+          <ul>
+            <li><a href="files/verilog/Verilog_Primer_Slides.pdf">Verilog Primer Slides</a></li>
+            <li><a href="files/verilog/wire_vs_reg.pdf">wire vs reg</a>, from the CS150 Spring 2009 class.</li>
+            <li><a href="files/verilog/always_at_blocks.pdf">always@ blocks</a>, from the CS150 Fall 2009 class.</li>
+            <li><a href="files/verilog/verilog_fsm.pdf">FSMs in Verilog</a></li>
+            <li><a href="files/verilog/ready_valid_interface.pdf">Ready-Valid Interfaces</a></li>
+          </ul>
+
+          <h3 id="protocols--standards">Protocols &amp; Standards</h3>
+
+          <ul>
+            <li><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=1620780">IEEE Verilog</a></li>
+            <li><a href="http://www-inst.eecs.berkeley.edu/~cs150/fa13/resources/I2C_BUS_SPECIFICATION_3.pdf">I2C Bus</a></li>
+            <li><a href="http://www-inst.eecs.berkeley.edu/~cs150/fa13/resources/MAX3233E-MAX3235E.pdf">RS-232</a></li>
+          </ul>
+			
+		 <h3 id="cs61c-videos"> CS61C videos</h3>
+		<ul>
+			<li>RISC-V Assembly <a href="https://drive.google.com/file/d/1ESmDeEkKxJwT4py3upko7cB8J7yWyV-k/view"> 1</a>
+			<a href="https://drive.google.com/file/d/1-feaaq5lQ9bMmBc_Frx0E_hBcuYPbVkQ/view"> 2</a>
+			<a href="https://drive.google.com/file/d/13myOeVaKnxRkw93d6DJn_2j72QztNTLe/view"> 3</a>
+			<a href="https://drive.google.com/file/d/1cuqf-VZCruqzlzllHsmbtPzYqorkS7wW/view"> 4</a>
+			<a href="https://drive.google.com/file/d/1FfYz3lgwo5hxAs3Vw15n8BDiteNyl80m/view"> 5</a>
+			<a href="https://drive.google.com/file/d/1bZs1JkRq8cz7JW0z8N617el-Eck_Bt9p/view"> 6</a>
+			<a href="https://drive.google.com/file/d/14Fv7D3u32KwQKreILeTKVBHtFOwFseAK/view"> 7</a>
+			<a href="https://drive.google.com/file/d/1YQg-mbNpFQQ0Izr7J4TORpt7SAw_IaqR/view"> 8</a>
+			<a href="https://drive.google.com/file/d/1wI6pm6el0wJtXgZrRPAE0mEaLEkTymHu/view"> 9</a>
+			<a href="https://drive.google.com/file/d/1ac8nE6BVTZZSnUXv3TPrluigXk28UYvt/view"> 10</a>
+			<a href="https://drive.google.com/file/d/1WBpJUTqsXYa9N42CFNE5NdmFnCUx-NYW/view"> 11</a>
+			<a href="https://drive.google.com/file/d/1kEyKEPzjUCmvS2ICPmoDm2lLxtddhyT9/view"> 12</a>
+			<a href="https://drive.google.com/file/d/1yj-FlPbqnIF-nuX5QcYA2Pgp52kuvXsv/view"> 13</a>
+			<a href="https://drive.google.com/file/d/18cUesAWDOq8H_wY7B3MLm6VBJYbCxUq5/view"> 14</a>
+			</li>
+			<li>RISC-V (RV32I) Instruction Formats
+			<a href="https://drive.google.com/file/d/1CXiSE_Wl5Pkju1HVwUfibO-2nqr7l4gK/view"> 1</a>
+			<a href="https://drive.google.com/file/d/1idnwCGmSg1tX12cGmKuIIEAZnbA5I56w/view"> 2</a>
+			<a href="https://drive.google.com/file/d/1slLV_zyWu6rpDE_XCHdnacGiBp2jOZlz/view"> 3</a>
+			<a href="https://drive.google.com/file/d/1UbnSAZG7gGeC779jyMPCmUjZKsYkbdzt/view"> 4</a>
+			<a href="https://drive.google.com/file/d/1TR8SG1xqius60R2cUXXWl6wktVyEWmCl/view"> 5</a>
+			<a href="https://drive.google.com/file/d/11noSml_k5IW3qhpRiYE-ZvjsEuOCbBdZ/view"> 6</a>
+			<a href="https://drive.google.com/file/d/1xUVTXNa_j3pYKJtnRPF03X0SWv3YqWdo/view"> 7</a>
+			<a href="https://drive.google.com/file/d/18dZMu9793g1tZvg2jFc7STVkhVKRJvT2/view"> 8</a>
+			<a href="https://drive.google.com/file/d/1ZNkseezHUA5mSocYuJGW-eF58m_VP4kd/view"> 9</a>
+			</li>
+			<li>CPU Design
+			<a href="https://drive.google.com/file/d/1qLZMBiILkhL6D0TiwYat4-bmr1sTqGlD/view"> 1</a>
+			<a href="https://drive.google.com/file/d/1Ei54b9_1QNkbLlJPFy1QXzGbJDxNilYL/view"> 2</a>
+			<a href="https://drive.google.com/file/d/1eZFAVvYMpuzC9QAnvUajn6mG-hQyfcYH/view"> 3</a>
+			<a href="https://drive.google.com/file/d/1WxlPuzE5K73kj5KAUtGEf3eMw_Q7Epzi/view"> 4</a>
+			<a href="https://drive.google.com/file/d/1R415AE_fvcd9TghD9fjlzcTA8Ekh9lHs/view"> 5</a>
+			<a href="https://drive.google.com/file/d/1dhIbYOENocuQTQ3jhdYYRJwAgbFsgq0M/view"> 6</a>
+			<a href="https://drive.google.com/file/d/1xbPhTJtsL8_hSVAtQU3OlqDgk8BRa4l-/view"> 7</a>
+			<a href="https://drive.google.com/file/d/14de6rlHCBELNqThqsjQTbKrXA8O9Io2d/view"> 8</a>
+			<a href="https://drive.google.com/file/d/1DTN-gZ8i7aNVPUVf3h0xNU1VrT9Ibavr/view"> 9</a>
+			<a href="https://drive.google.com/file/d/1DWA81zVuzLxR1_dVTTbWT-mQYRG-_nEs/view"> 10</a>
+			<a href="https://drive.google.com/file/d/1o18NNu9gmzj8sdA6fkqX7dCNJdGv5sZ5/view"> 11</a>
+			<a href="https://drive.google.com/file/d/1eaALB9ZOHQLfBp2XscvwoH8gANgcNwzD/view"> 12</a>
+			<a href="https://drive.google.com/file/d/1y3wYK2Na7Ss2USy1lt4Z6_MLi_SPSBUx/view"> 13</a>
+			<a href="https://drive.google.com/file/d/1woVnm6o0sPOGrJKQNkTnKsGGiLYL_tsx/view"> 14</a>
+			<a href="https://drive.google.com/file/d/1C091J_NFtbjUNcmPKQ16Y15fEoTdDqsl/view"> 15</a>
+			<a href="https://drive.google.com/file/d/1uhAhRkEdR_LTNXMKqC6IXu0QHEiUr0pr/view"> 16</a>
+			<a href="https://drive.google.com/file/d/1h9O57Pep4n9fIdu1tp4ONTn3QqPErpy9/view"> 17</a>		
+			</li>
+			<li>Pipeline
+			<a href="https://drive.google.com/file/d/1iIoyptwgYz5eZRsv0q_6YGk5XwoqEmkY/view"> 1</a>
+			<a href="https://drive.google.com/file/d/1i8t5LjEpKEcRWCx_ZDLIT5IzVqruANAC/view"> 2</a>
+			<a href="https://drive.google.com/file/d/1teLU3SaWpf1O8vGWh5X-0DDYCjTvHx8n/view"> 3</a>
+			<a href="https://drive.google.com/file/d/1WNpnQb0PMzDqODGY0RyUZf-_g3vqOuFy/view"> 4</a>
+			<a href="https://drive.google.com/file/d/1DZlMNXBfd8ZjNON7bg51mc6GlZzxmqym/view"> 5</a>
+			<a href="https://drive.google.com/file/d/1PQecS6-XUxQlQe9jZJre9EIfvAH1JLCQ/view"> 6</a>
+			<a href="https://drive.google.com/file/d/1gy6JrTVusjjfjyg-2b9wwujZUS-okVfP/view"> 7</a>
+			<a href="https://drive.google.com/file/d/1j-w1MohDCZnYoBqpV3Df3XqxGPp1LdeS/view"> 8</a>
+			<a href="https://drive.google.com/file/d/1Y9F0MoXIh76AZpFxS4TG3n3lnbgaj8Yk/view"> 9</a>
+			<a href="https://drive.google.com/file/d/16nsqbYRGC8mbIBcNWbb6XW4sHAhPvYV0/view"> 10</a>
+			<a href="https://drive.google.com/file/d/1VLOLxjtqezWObciZqKYfPb-c8ccHS94u/view"> 11</a>
+			</li>
+			<li> Caches
+			<a href="https://drive.google.com/file/d/1k4ui2jLLmpNQoUxzk0R5Rx__GTyIMk9O/view"> 1.1</a>
+			<a href="https://drive.google.com/file/d/1X9DIarg0_Wf1n1oXFXl5CdEWYiRLfsAf/view"> 1.2</a>
+			<a href="https://drive.google.com/file/d/1DCKKijhptJDuHxQK49yDOQaAkVjbZOib/view"> 1.3</a>
+			<a href="https://drive.google.com/file/d/11XRkMReG04qqnJD9x-L9YUKj69p_2MkY/view"> 1.4</a>
+			<a href="https://drive.google.com/file/d/1xoic-XsaXWr7VvcTm6iltCJJuQhXhB-T/view"> 2.1</a>
+			<a href="https://drive.google.com/file/d/1btm0l2LRen6WsvJrEYypF4cxNz2fCq_c/view"> 2.2</a>
+			<a href="https://drive.google.com/file/d/1xZjsgkX4dpZuApozKZGfx2kDpyLVuLp3/view"> 2.3</a>
+			<a href="https://drive.google.com/file/d/1D__02aQMGHKRdYgiw1RYMjGBmnFp5E_f/view"> 3.1</a>
+			<a href="https://drive.google.com/file/d/1BRJc6ZbdEI4QbY2xC5q25AdkSWgR8Gk2/view"> 3.2</a>
+			<a href="https://drive.google.com/file/d/1icyu7ZgnbcCqTh-boj9GZrrPY-RY7wc7/view"> 3.3</a>
+			<a href="https://drive.google.com/file/d/1a2SdXA8wfaDQ1eDbUmaBfztyjU4GF-d8/view"> 4.1</a>
+			<a href="https://drive.google.com/file/d/1janAbQcIsyFsHP_a6TjXdP6oKKfbqa5M/view"> 4.2</a>
+			<a href="https://drive.google.com/file/d/1jQGVmJFIq2ml_SNgtWxFak1NMzwMbfgd/view"> 4.3</a>
+			<a href="https://drive.google.com/file/d/1b873MOE9TwLsIsCGIH93J8FQ9kTei-MI/view"> 4.4</a>
+			</li>
+		</ul>
+
+          <h2 id="staff">Staff</h2>
+
+          <table>
+            <tbody>
+              <tr>
+                <td><img src="img/bora.jpg" alt="Bora photo" style="width:100px;"/></td>
+                <td>Borivoje Nikolic</td>
+                <td>bora at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/alisha.jpg" alt="alisha photo" style="width:100px;"/></td>
+                <td>Alisha Menon</td>
+                <td>allymenon at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/bob.jpg" style="width:100px;" /></td>
+                <td>Bob Zhou</td>
+                <td>bob.linchuan at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/charles.jpg" style="width:100px;" /></td>
+                <td>Charles Hong</td>
+                <td>charleshong at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/daniel.jpg" alt="daniel photo" style="width:100px;"/></td>
+                <td>Daniel Grubb</td>
+                <td>dpgrubb at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/nayiri.jpg" alt="nayiri photo" style="width:100px;"/></td>
+                <td>Nayiri Krzysztofowicz</td>
+                <td>nayiri at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/vighnesh.jpg" alt="vighnesh photo" style="width:100px;"/></td>
+                <td>Vighnesh Iyer</td>
+                <td>vighnesh.iyer at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/zhaokai.jpg" alt="zhaokai photo" style="width:100px;"/></td>
+                <td>Zhaokai Liu</td>
+                <td>zhaokai_liu at berkeley dot edu</td>
+              </tr>
+              <tr>
+                <td><img src="img/zhenghan.JPG" alt="zhenghan photo" style="width:100px;"/></td>
+                <td>Zhenghan Lin</td>
+                <td>zhenghan_lin at berkeley dot edu</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="grading">Grading</h2>
+
+          <h3 id="class">Class</h3>
+
+          <table>
+            <tbody>
+              <tr>
+                <td>Problem Sets</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <td>Midterm Exam 1</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <td>Midterm Exam 2</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <td>Final Exam</td>
+                <td>40%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="asic-labs">ASIC Labs</h3>
+
+          <table>
+            <tbody>
+              <tr>
+                <td>Lab Reports</td>
+                <td>37.5%</td>
+              </tr>
+              <tr>
+                <td>Project</td>
+                <td>62.5%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="fpga-labs">FPGA Labs</h3>
+
+          <table>
+            <tbody>
+              <tr>
+                <td>Lab Checkoffs</td>
+                <td>25%</td>
+              </tr>
+              <tr>
+                <td>Project</td>
+                <td>75%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="cheating-policy">Cheating Policy</h2>
+
+          <ul>
+            <li>If you turn in someone else’s work as if it were your own, you are guilty of cheating.  This includes problem sets, answers on exams, lab exercise checks, project design, and any required course turn-in material.</li>
+            <li>Also, if you knowingly aid in cheating, you are guilty.</li>
+            <li>We have software that compares your submitted work to others.</li>
+            <li>However, it is okay to discuss with others lab exercises and the project (obviously, okay to work with project partner).  Okay to discuss homework with others.  But everyone must turn in their own work.</li>
+            <li>Do not post your work on public repositories like github (private o.k.)</li>
+            <li><strong>If we catch you cheating, you will get negative points on the assignment: It is better to not do the work than to cheat!  If it is a midterm exam, final exam, or final project, you get an F in the class.  All cases of cheating reported to the office of student conduct. </strong></li>
+          </ul>
+      </div>
+    </article>
+  </div>
+</main>
+</body>
+</html>
