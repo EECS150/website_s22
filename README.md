@@ -1,4 +1,4 @@
-# EECS151/251 Fa21 Course Website
+# EECS151/251 sp22 Course Website
 
 ## Step 0: Make sure you have write access
 
