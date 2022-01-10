@@ -17,7 +17,7 @@
   - Commit and push to this repo
   - 
     ```sh
-    $ ssh eecs151@ashby.cs.berkeley.edu
+    $ ssh eecs151@cory.eecs.berkeley.edu
     $ cd ~/public_html/sp22
     $ git pull
     ```
