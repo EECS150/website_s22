@@ -18,6 +18,6 @@
   - 
     ```sh
     $ ssh eecs151@ashby.cs.berkeley.edu
-    $ cd ~/public_html/fa21
+    $ cd ~/public_html/sp22
     $ git pull
     ```
